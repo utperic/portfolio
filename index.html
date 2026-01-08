@@ -1,289 +1,441 @@
-<!DOCTYPE HTML>
-<!--
-	Strata by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>EricYeh's Website</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<script>
-		function navigateToSection(sectionId) {
-			document.getElementById(sectionId).scrollIntoView({ behavior: "smooth" });
-		}
-		function OpenTab(evt, tab_id) {
-			var i, tabcontent, tablinks;
-			tabcontent = document.getElementsByClassName("tabcontent");
-			for (i = 0; i < tabcontent.length; i++) {
-				tabcontent[i].style.display = "none";
-			}
-			tablinks = document.getElementsByClassName("tablinks");
-			for (i = 0; i < tablinks.length; i++) {
-				tablinks[i].className = tablinks[i].className.replace(" active", "");
-			}
-			document.getElementById(tab_id).style.display = "block";
-			evt.currentTarget.className += " active";
-		}
-		document.getElementById("defaultOpen").click();
-	</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zong-Wei (Eric) Yeh | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- 1. COLOR PALETTE (White/Blue Theme) --- */
+        :root {
+            --primary-navy: #0f2c4c;      /* Deep Professional Blue */
+            --accent-blue: #3b82f6;       /* Modern UI Blue */
+            --bg-body: #f8fafc;           /* Very light slate (not stark white) */
+            --bg-card: #ffffff;           /* Pure white for content */
+            --text-main: #334155;         /* Dark Slate for reading */
+            --text-muted: #64748b;        /* Muted gray for dates/details */
+            --border-light: #e2e8f0;      /* Subtle borders */
+        }
+
+        /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-navy);
+            font-weight: 700;
+        }
+
+        h1 { font-size: 2.5rem; letter-spacing: -0.5px; }
+        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-blue); display: inline-block; }
+        h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        
+        a { text-decoration: none; color: var(--accent-blue); transition: color 0.3s; }
+        a:hover { color: var(--primary-navy); }
+
+        /* --- 3. LAYOUT STRUCTURE --- */
+        .container {
+            max-width: 900px; /* Optimal reading width */
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- 4. HEADER SECTION --- */
+        header {
+            background-color: var(--bg-card);
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+        
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .header-info p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .social-links { margin-top: 20px; }
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--text-muted);
+        }
+        .social-links a:hover { color: var(--accent-blue); transform: translateY(-2px); display: inline-block; }
+
+        /* --- 5. NAVIGATION --- */
+        nav {
+            background: var(--primary-navy);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 15px 0;
+        }
+
+        nav li { margin: 0 15px; }
+        
+        nav a {
+            color: rgba(255,255,255,0.8);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        nav a:hover { color: #fff; }
+
+        /* --- 6. SECTIONS --- */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        section:last-child { border-bottom: none; }
+
+        /* --- 7. TABS (About Section) --- */
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tab-btn {
+            background: none;
+            border: 1px solid var(--border-light);
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            color: var(--text-muted);
+            font-weight: 600;
+            transition: all 0.3s;
+            background: white;
+        }
+        
+        .tab-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+        .tab-btn.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
+
+        .tab-content {
+            display: none;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-light);
+        }
+        
+        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+
+        .list-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .list-item:last-child { border-bottom: none; }
+        
+        .year-badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--primary-navy);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        /* --- 8. PUBLICATION CARDS --- */
+        .paper-card {
+            background: var(--bg-card);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            border-left: 4px solid var(--accent-blue);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .paper-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .paper-title { font-size: 1.15rem; color: var(--primary-navy); font-weight: 700; display: block; margin-bottom: 8px; }
+        .paper-authors { font-size: 0.95rem; color: var(--text-main); margin-bottom: 5px; }
+        .paper-journal { font-family: 'Merriweather', serif; font-style: italic; color: var(--text-muted); font-size: 0.9rem; }
+        .tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            background: #e0f2fe;
+            color: #0369a1;
+            font-weight: 600;
+        }
+
+        /* --- 9. CONTACT --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-info-item { display: flex; align-items: center; margin-bottom: 20px; }
+        .contact-info-item i {
+            width: 40px; height: 40px; background: #eff6ff; color: var(--accent-blue);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            margin-right: 15px;
+        }
+
+        /* --- 10. FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            nav ul { font-size: 0.8rem; padding: 10px 0; }
+            nav li { margin: 0 8px; }
+        }
+    </style>
 </head>
+<body>
 
-<body class="is-preload">
-	<!-- Navigation buttons -->
-	<div id="navbar">
-		<i> Welcome to Eric's Personal Website</i>
-		<button onclick="navigateToSection('one')">About Me</button>
-		<button onclick="navigateToSection('two')">Publications</button>
-		<button onclick="navigateToSection('three')">Working Paper</button>
-		<button onclick="navigateToSection('four')">Work-in-progress</button>
-	</div>
-	<!-- Header -->
-	<header id="header">
-		<div class="inner">
-			<a class="image avatar"><img src="images/eric_web.jpeg" alt="" width="600" height="150" /></a>
-			<h1><strong>Hello, I'm Eric Yeh.</strong><br /><br />
-				A financial engineering Ph.D. student.</h1>
-		</div>
-	</header>
+    <header id="home">
+        <div class="container">
+            <img src="images/ZWY.jpg" alt="Zong-Wei Yeh" class="avatar" style="width: 200px; height: 200px;">
+            <h1>Zong-Wei (Eric) Yeh</h1>
+            <div class="header-info">
+                <p>Ph.D. Candidate in Money and Banking</p>
+                <p>National Chengchi University, Taiwan</p>
+            </div>
+            <div class="social-links">
+                <a href="mailto:111352502@nccu.edu.tw" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://scholar.google.com/citations?user=Gp7MfYwAAAAJ&hl=en&oi=ao" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+                <a href="http://www.github.com/utperic" title="Github"><i class="fab fa-github"></i></a>
+                <a href="ZWY_resume.pdf" title="Download CV"><i class="fas fa-file-pdf"></i></a>
+            </div>
+        </div>
+    </header>
 
-	<!-- Main -->
-	<div id="main">
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#working-papers">Working Papers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-		<!-- One -->
-		<section id="one">
-			<header class="major">
-				<h2>About me</h2>
-			</header>
-			<h4 style="text-align: left;">
-				"Your quotes".
-			</h4>
-			<div class="tab" style="align-items: center;">
-				<button class="tablinks" onclick="OpenTab(event, 'education')" id="defaultOpen"><i
-						class="fas fa-graduation-cap"
-						style="margin-right: 8px; margin-left: 8px;"></i>Education</button>
-				<button class="tablinks" onclick="OpenTab(event, 'experiences')"><i class="fas fa-desktop"
-						style="margin-right: 8px; margin-left: 8px;"></i>Experiences</button>
-				<button class="tablinks" onclick="OpenTab(event, 'tas')"><i class="fas fa-chalkboard-teacher"
-						style="margin-right: 8px; margin-left: 8px"></i>TAs</button>
-			</div>
-			<div id="education" class="tabcontent">
-				<p>
-				<ul>
-					<li><span class="item">PhD</span></li>
-					<ul>
-						<li>Ph.D. in Money and Banking, National Chengchi University<span class="year">22.09 -
-								present</span>
-						</li>
-					</ul>
-					<li><span class="item">Master</span></li>
-					<ul>
-						<li>M.S. in Money and Banking, National Chengchi University<span class="year">20.09 -
-								22.06</span>
-						</li>
-					</ul>
-					<li><span class="item">Undergraduate</span></li>
-					<ul>
-						<li>B.S. in Mathematics, University of Taipei<span class="year">16.09 - 20.06</span>
-						</li>
-					</ul>
-				</ul>
-				</p>
-			</div>
-			<div id="experiences" class="tabcontent">
-				<p>
-				<ul>
-					<li><span class="item">section</span></li>
-					<ul>
-						<li>item <span class="year">date</span></li>
-					</ul>
-				</ul>
-				</p>
-			</div>
-			<div id="tas" class="tabcontent">
-				<p>
-				<ul>
-					<li><span class="item">Graduate</span></li>
-					<ul>
-						<li>Financial Engineering<span class="year">21.09 - present</span></li>
-					</ul>
-					<ul>
-						<li>Options pricing and applications<span class="year">23.09 - Present</span></li>
-					</ul>
-					<li><span class="item">Undergraduate</span></li>
-					<ul>
-						<li>Derivatives<span class="year">21.02 - 22.06</span>
-						</li>
-					</ul>
-				</ul>
-				</p>
-			</div>
-			<script>
-				document.getElementById("defaultOpen").click();
-			</script>
-			<ul class="actions">
-				<li><a href="cv.pdf" class="button">Download CV</a></li>
-			</ul>
-		</section>
-		<section id="two">
-			<header class="major">
-				<h2>Publications</h2>
-			</header>
-			<div class="row">
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="https://www.sciencedirect.com/science/article/pii/S0927538X24001434">
-							What Drives Jumps in the Secured Overnight Financing Rate? Evidence from the Arbitrage-free
-							Nelson-Siegel Model with
-							Jump Diffusion
-						</a>
-					</h3>
-					<p>With: Dong-Jie Fang, Jie-Cao He, and Shih-Kuei Lin</p>
-					<p><em>Pacific-Basin Finance Journal (PBFJ), 2024</em></p>
-					<p>Presented at 2022 Joint Annual Meeting TRIA-FeAT, Providence University / 2022 International
-						Conference of TFA, Online</p>
-				</article>
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="">
-							Delta Hedging in the USD/JPY Options Market: Insights from Implied Stochastic Volatility
-						</a>
-					</h3>
-					<p>With: Shih-Kuei Lin, Kendro Vincent, and Chung-Jen Lin</p>
-					<p><em>Forthcoming at Management Review, 2024</em></p>
-					<p>Presented at 2023 Annual Meeting of TRIA, National Chiayi University</p>
-				</article>
-			</div>
-		</section>
-		<!-- Three -->
-		<section id="three">
-			<header class="major">
-				<h2>Working Papers</h2>
-			</header>
-			<div class="row">
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4616030">
-							Non-Pecuniary Preferences, Adverse Selection, and Moral Hazard in P2p Lending: Evidence
-							from Lending Club
-						</a>
-					</h3>
-					<p>With: Dong-Jie Fang, Chien-Hsiu Lin, and Shih-Kuei Lin</p>
-					<p><em>SSRN 4616030, Oct 2023</em></p>
-					<p>Presented at 2023 Annual Meeting of TRIA, National Chiayi University</p>
-				</article>
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="">
-							Carbon Policy Paradox: The divergent Impacts of Short term versus Long-term Policies
-						</a>
-					</h3>
-					<p>With: I-Hsuan Ethan Chiang, Shih-Kuei Lin</p>
-					<!-- <p><em>SSRN 4616030, Oct 2023</em></p> -->
-					<p>Presented at 2024 Annual Meeting of FeAT, Ming Chuan University/ 2024 Massey Sustainable Finance Conference, Online/ 2024 Annual Meeting of TRIA, Shih Chien University </p>
-				</article>
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="">
-							Is Compound Effect in Leverage ETF Bad?
-						</a>
-					</h3>
-					<p>With: Shih-Kuei Lin</p>
-					<!-- <p><em>SSRN 4616030, Oct 2023</em></p> -->
-					<p>Presented at 2023 Annual Meeting of TRIA, National Chiayi University</p>
-				</article>
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5055711">
-							Does One Patern Fit All? Image Analysis for Different Equity Styles
-						</a>
-					</h3>
-					<p>With: Yu-Chen Den, Kendro Vincent</p>
-					<p><em>SSRN 5055711, Dec 2024</em></p>
-					<p>Presented at 2024 Annual Meeting of FeAT, Ming Chuan University</p>
-				</article>
-			</div>
-		</section>
-		<!-- add after porject done -->
-		<section id="four">
-			<header class="major">
-				<h2>Work-In-Progress</h2>
-			</header>
-			<div class="row">
-				<article class="col-12 col-12-xsmall work-item">
-					<h3>
-						<a href="">
-							Return Predictability of Universal Commodity Ratio
-						</a>
-					</h3>
-					<p>With: Yu-Chen Den</p>
-			</div>
-		</section>
-		<!-- Four -->
-		<section id="four">
-			<h2>Get In Touch</h2>
-			<p>Feel free to contact!</p>
-			<div class="row">
-				<div class="col-8 col-12-small">
-					<form method="post" action="#">
-						<div class="row gtr-uniform gtr-50">
-							<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name"
-									placeholder="Name" /></div>
-							<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email"
-									placeholder="Email" /></div>
-							<div class="col-12"><textarea name="message" id="message" placeholder="Message"
-									rows="4"></textarea></div>
-						</div>
-					</form>
-					<ul class="actions">
-						<li><input type="submit" value="Send Message" /></li>
-					</ul>
-				</div>
-				<div class="col-4 col-12-small">
-					<ul class="labeled-icons">
-						<li>
-							<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-							(+886) 09xx-xxx-xxx
-						</li>
-						<li>
-							<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-							<a href="mailto:111352502@g.nccu.edu.tw">111352502@g.nccu.edu.tw</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</section>
-	</div>
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem;">
+                I am a Ph.D. candidate at National Chengchi University. My research interests include 
+                <strong>Derivatives, Financial Engineering, Sustainable Finance, and AI in Finance</strong>.
+            </p>
 
-	<!-- Footer -->
-	<footer id="footer">
-		<div class="inner">
-			<ul class="icons">
-				<li><a href="https://scholar.google.com/citations?user=Gp7MfYwAAAAJ&hl=en&oi=ao"
-						class="fa-brands fa-google-scholar"><span class="label">Google Scholar</span></a></li>
-				<li><a href="http://www.github.com/utperic" class="icon brands fa-github"><span
-							class="label">Github</span></a></li>
-				<li><a href="https://www.facebook.com/" class="icon brands fab fa-facebook"><span
-							class="label">FaceBook</span></a></li>
-			</ul>
-			<ul class="copyright">
-				<li>&copy; Eric Yeh</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</div>
-	</footer>
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab('education')">Education</button>
+                <button class="tab-btn" onclick="openTab('honors')">Honors & Awards</button>
+                <button class="tab-btn" onclick="openTab('teaching')">Teaching</button>
+            </div>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/jquery.poptrox.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+            <div id="education" class="tab-content active">
+                <div class="list-item">
+                    <strong>Ph.D. in Money and Banking</strong> <span class="year-badge">2022 - 2026 (Exp)</span><br>
+                    National Chengchi University
+                </div>
+                <div class="list-item">
+                    <strong>M.S. in Money and Banking</strong> <span class="year-badge">2020 - 2022</span><br>
+                    National Chengchi University
+                </div>
+                <div class="list-item">
+                    <strong>B.S. in Mathematics</strong> <span class="year-badge">2016 - 2020</span><br>
+                    University of Taipei
+                </div>
+            </div>
 
+            <div id="honors" class="tab-content">
+                <div class="list-item">
+                    <strong>Outstanding Doctoral Student Fellowship, NSTC</strong> <span class="year-badge">2022-2026</span>
+                </div>
+                <div class="list-item">
+                    <strong>Conference Subsidy (ESWC), NSTC</strong> <span class="year-badge">2025</span>
+                </div>
+                <div class="list-item">
+                    <strong>Travel Grant (CICF), NCCU</strong> <span class="year-badge">2025</span>
+                </div>
+                <div class="list-item">
+                    <strong>Gold Award, Bank of Taiwan Prize in Finance</strong> <span class="year-badge">2022</span>
+                </div>
+            </div>
+
+            <div id="teaching" class="tab-content">
+                <div class="list-item">
+                    <strong>Advanced Econometrics (Ph.D.)</strong> — TA for Prof. Kendro Vincent <span class="year-badge">113-1</span>
+                </div>
+                <div class="list-item">
+                    <strong>Financial Econometrics (Graduate)</strong> — TA for Prof. Kendro Vincent <span class="year-badge">113-1, 114-1</span>
+                </div>
+                <div class="list-item">
+                    <strong>Financial Engineering (Graduate)</strong> — TA for Prof. Shih-Kuei Lin <span class="year-badge">112-1, 113-1</span>
+                </div>
+                <div class="list-item">
+                    <strong>Financial Derivatives (Undergrad)</strong> — TA for Prof. Shih-Kuei Lin <span class="year-badge">109-2, 113-2</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications">
+        <div class="container">
+            <h2>Publications</h2>
+            
+            <div class="paper-card">
+                <a href="https://www.sciencedirect.com/science/article/pii/S0927538X24001434" class="paper-title">
+                    What Drives Jumps in the Secured Overnight Financing Rate? Evidence from the Arbitrage-Free Nelson-Siegel Model with Jump Diffusion
+                </a>
+                <p class="paper-authors">with Dong-Jie Fang, Jie-Cao He, and Shih-Kuei Lin</p>
+                <p class="paper-journal">Pacific-Basin Finance Journal, 2024 (NSTC ATier 2)</p>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-title">
+                    Delta Hedging in the USD/JPY Options Market: Insights from Implied Stochastic Volatility
+                </span>
+                <p class="paper-authors">with Shih-Kuei Lin, Kendro Vincent, and Chung-Jen Lin</p>
+                <p class="paper-journal">Management Review, 2024 (TSSCI)</p>
+                <span class="tag">Corresponding Author</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="working-papers">
+        <div class="container">
+            <h2>Working Papers</h2>
+
+            <div class="paper-card">
+                <span class="paper-title">Carbon Policy Paradox: The Divergent Impacts of Short-term versus Long-term Policies</span>
+                <p class="paper-authors">with I-Hsuan Ethan Chiang and Shih-Kuei Lin</p>
+                <p class="paper-journal">Submitted to Review of Financial Studies</p>
+                <span class="tag">Job Market Paper</span> <span class="tag">Corresponding Author</span>
+                <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">Presentations: CICF, ESWC, FMA, EFMA, AsianFA, MSFC, EcoSta, FeAT</p>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-title">Empirical Research on the Taiwan Stock Market: Review and Outlook</span>
+                <p class="paper-authors">with Wei-Che Tsai, Hsin Yu Chiu, and Kendro Vincent</p>
+                <p class="paper-journal">Revised & Resubmit to NTU Management Review</p>
+            </div>
+
+            <div class="paper-card">
+                <span class="paper-title">Altruism in P2P Lending: Evidence from Lending Club</span>
+                <p class="paper-authors">with Dong-Jie Fang, Chien-Hsiu Lin, and Shih-Kuei Lin</p>
+                <p class="paper-journal">Submitted to Review of Quantitative Finance and Accounting</p>
+            </div>
+            
+            <div class="paper-card">
+                <span class="paper-title">Volatility Decay and Arbitrage in Leveraged ETFs: Evidence from the US and Japan</span>
+                <p class="paper-authors">with Cheng-To Lin, Shih-Kuei Lin, and George Y. Wang</p>
+                <span class="tag">Corresponding Author</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <strong>Office Address</strong><br>
+                            National Chengchi University<br>
+                            No. 64, Sec. 2, Zhinan Rd., Wenshan Dist., Taipei
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <a href="mailto:111352502@nccu.edu.tw">111352502@nccu.edu.tw</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone</strong><br>
+                            (+886) 981-897-609
+                        </div>
+                    </div>
+                </div>
+                <div>
+                   <p>Feel free to reach out for research collaborations or full CV requests.</p>
+                   <br>
+                   <a href="ZWY_resume.pdf" style="display:inline-block; padding: 12px 25px; background: var(--primary-navy); color: white; border-radius: 6px; font-weight: 600;">Download Full Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Zong-Wei Yeh. All rights reserved.
+    </footer>
+
+    <script>
+        function openTab(tabName) {
+            // Hide all tab contents
+            var contents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].style.display = "none";
+                contents[i].classList.remove("active");
+            }
+            // Remove active class from buttons
+            var buttons = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+            // Show the specific tab content
+            document.getElementById(tabName).style.display = "block";
+            // Add active class to the content and the button that was clicked
+            document.getElementById(tabName).classList.add("active");
+            
+            // Find the button that called this function (tricky without event, so we loop by text or index, but simpler to just use event.currentTarget if passed, or just highlight by index logic. Simpler approach for this snippet:
+            // Let's just update the button visually using the logic below based on `event` which is implicitly available in inline calls or better yet:
+            event.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
-
 </html>
