@@ -4,228 +4,379 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zong-Wei (Eric) Yeh | Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 1. COLOR PALETTE (White/Blue Theme) --- */
+        /* --- 1. COLOR PALETTE --- */
         :root {
             --primary-navy: #0f2c4c;      /* Deep Professional Blue */
+            --primary-light: #1a426d;     /* Lighter Navy for hover */
             --accent-blue: #3b82f6;       /* Modern UI Blue */
-            --bg-body: #f8fafc;           /* Very light slate (not stark white) */
-            --bg-card: #ffffff;           /* Pure white for content */
-            --text-main: #334155;         /* Dark Slate for reading */
-            --text-muted: #64748b;        /* Muted gray for dates/details */
+            --bg-body: #f8fafc;           /* Very light slate */
+            --bg-card: #ffffff;           /* Pure white */
+            --text-main: #334155;         /* Dark Slate */
+            --text-muted: #64748b;        /* Muted gray */
             --border-light: #e2e8f0;      /* Subtle borders */
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
 
         /* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
+        html {
+            scroll-behavior: smooth; 
+            scroll-padding-top: 80px; 
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-body);
             color: var(--text-main);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3 {
-            color: var(--primary-navy);
-            font-weight: 700;
+        h1, h2, h3 { color: var(--primary-navy); font-weight: 700; }
+        h1 { font-size: 2.5rem; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+        h2 { 
+            font-size: 1.75rem; 
+            margin-bottom: 2rem; 
+            padding-bottom: 0.5rem; 
+            border-bottom: 3px solid var(--accent-blue); 
+            display: inline-block; 
         }
-
-        h1 { font-size: 2.5rem; letter-spacing: -0.5px; }
-        h2 { font-size: 1.8rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--accent-blue); display: inline-block; }
-        h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
         
-        a { text-decoration: none; color: var(--accent-blue); transition: color 0.3s; }
+        a { text-decoration: none; color: var(--accent-blue); transition: color 0.2s; }
         a:hover { color: var(--primary-navy); }
 
         /* --- 3. LAYOUT STRUCTURE --- */
         .container {
-            max-width: 900px; /* Optimal reading width */
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* --- 4. HEADER SECTION --- */
         header {
-            background-color: var(--bg-card);
-            padding: 60px 0 40px;
+            background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+            padding: 80px 0 60px;
             text-align: center;
             border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
         }
         
         .avatar {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 24px;
+            transition: transform 0.3s ease;
         }
+        
+        .avatar:hover { transform: scale(1.02); }
 
         .header-info p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--text-muted);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .social-links { margin-top: 20px; }
+        .social-links { margin-top: 24px; }
         .social-links a {
-            font-size: 1.5rem;
-            margin: 0 10px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: white;
+            font-size: 1.25rem;
+            margin: 0 8px;
             color: var(--text-muted);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
         }
-        .social-links a:hover { color: var(--accent-blue); transform: translateY(-2px); display: inline-block; }
+        .social-links a:hover { 
+            color: white; 
+            background: var(--accent-blue); 
+            border-color: var(--accent-blue);
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-md);
+        }
 
         /* --- 5. NAVIGATION --- */
         nav {
-            background: var(--primary-navy);
+            background: rgba(15, 44, 76, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-md);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
         
         nav ul {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 15px 0;
+            padding: 0;
+            margin: 0;
         }
 
-        nav li { margin: 0 15px; }
+        nav li { margin: 0; }
         
         nav a {
-            color: rgba(255,255,255,0.8);
-            font-weight: 600;
+            display: block;
+            padding: 18px 20px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
             font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            transition: all 0.3s;
         }
         
-        nav a:hover { color: #fff; }
+        nav a:hover { 
+            color: #fff; 
+            background: rgba(255,255,255,0.1);
+        }
 
         /* --- 6. SECTIONS --- */
         section {
-            padding: 60px 0;
+            padding: 80px 0;
             border-bottom: 1px solid var(--border-light);
         }
-        
         section:last-child { border-bottom: none; }
 
         /* --- 7. TABS (About Section) --- */
         .tab-buttons {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-bottom: 30px;
         }
         
         .tab-btn {
-            background: none;
+            background: white;
             border: 1px solid var(--border-light);
-            padding: 10px 20px;
+            padding: 10px 24px;
             border-radius: 50px;
             cursor: pointer;
             color: var(--text-muted);
             font-weight: 600;
-            transition: all 0.3s;
-            background: white;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            box-shadow: var(--shadow-sm);
         }
         
-        .tab-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
-        .tab-btn.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
+        .tab-btn:hover { border-color: var(--accent-blue); color: var(--accent-blue); transform: translateY(-1px); }
+        .tab-btn.active { 
+            background: var(--primary-navy); 
+            color: white; 
+            border-color: var(--primary-navy); 
+            box-shadow: var(--shadow-md);
+        }
 
         .tab-content {
             display: none;
             background: var(--bg-card);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-light);
+            animation: fadeIn 0.4s ease-out;
         }
         
-        .tab-content.active { display: block; animation: fadeIn 0.5s; }
+        .tab-content.active { display: block; }
 
         .list-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
+            margin-bottom: 18px;
+            padding-bottom: 18px;
             border-bottom: 1px solid #f1f5f9;
         }
-        .list-item:last-child { border-bottom: none; }
+        .list-item:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
         
         .year-badge {
             display: inline-block;
             background: #eff6ff;
-            color: var(--primary-navy);
-            padding: 2px 8px;
-            border-radius: 4px;
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 6px;
             font-size: 0.8rem;
             font-weight: 700;
-            margin-left: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
         }
 
         /* --- 8. PUBLICATION CARDS --- */
         .paper-card {
             background: var(--bg-card);
-            padding: 25px;
-            margin-bottom: 20px;
+            padding: 28px;
+            margin-bottom: 24px;
             border-radius: 12px;
             border: 1px solid var(--border-light);
             border-left: 4px solid var(--accent-blue);
-            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .paper-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: #cbd5e1; 
         }
 
-        .paper-title { font-size: 1.15rem; color: var(--primary-navy); font-weight: 700; display: block; margin-bottom: 8px; }
-        .paper-authors { font-size: 0.95rem; color: var(--text-main); margin-bottom: 5px; }
-        .paper-journal { font-family: 'Merriweather', serif; font-style: italic; color: var(--text-muted); font-size: 0.9rem; }
-        .tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-top: 8px;
-            background: #e0f2fe;
-            color: #0369a1;
-            font-weight: 600;
+        .paper-title { 
+            font-size: 1.2rem; 
+            color: var(--primary-navy); 
+            font-weight: 700; 
+            display: block; 
+            margin-bottom: 10px; 
+            line-height: 1.4;
         }
+        .paper-title:hover { color: var(--accent-blue); text-decoration: underline; }
+        
+        .paper-authors { font-size: 0.95rem; color: var(--text-main); margin-bottom: 6px; }
+        
+        .paper-journal { 
+            font-family: 'Merriweather', serif; 
+            font-style: italic; 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            margin-bottom: 8px;
+        }
+        
+        .tag-container { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+        
+        .tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+        }
+        .tag.highlight { background: #e0f2fe; color: #0284c7; border-color: #bae6fd; }
+
+        /* --- Abstract Toggle Styles --- */
+        .abstract-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, opacity 0.3s ease;
+            opacity: 0;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            margin-top: 0;
+            padding: 0 20px;
+            border-left: 3px solid #cbd5e1;
+        }
+
+        .abstract-content.open {
+            opacity: 1;
+            margin-top: 15px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+
+        .abstract-text {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .btn-abstract {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 0;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.2s;
+        }
+
+        .btn-abstract:hover { color: var(--primary-navy); }
+        .btn-abstract i { margin-left: 6px; transition: transform 0.3s ease; }
+        .btn-abstract.active i { transform: rotate(180deg); }
+
 
         /* --- 9. CONTACT --- */
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
         }
-        .contact-info-item { display: flex; align-items: center; margin-bottom: 20px; }
+        
+        .contact-info-item { display: flex; align-items: flex-start; margin-bottom: 24px; }
         .contact-info-item i {
-            width: 40px; height: 40px; background: #eff6ff; color: var(--accent-blue);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin-right: 15px;
+            width: 48px; height: 48px; 
+            background: white; 
+            color: var(--accent-blue);
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 18px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            padding: 14px 28px;
+            background: var(--primary-navy);
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            box-shadow: var(--shadow-md);
+            transition: all 0.2s;
+        }
+        .btn-download:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            color: white;
         }
 
         /* --- 10. FOOTER --- */
         footer {
+            background: white;
             text-align: center;
             padding: 40px;
             color: var(--text-muted);
             font-size: 0.9rem;
+            border-top: 1px solid var(--border-light);
         }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            nav ul { font-size: 0.8rem; padding: 10px 0; }
-            nav li { margin: 0 8px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            
+            .header-info p { font-size: 1rem; }
+            .avatar { width: 140px; height: 140px; }
+
+            nav ul { flex-wrap: wrap; padding: 10px 0; }
+            nav a { padding: 10px 15px; font-size: 0.85rem; }
+            
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .tab-content { padding: 25px; }
         }
     </style>
 </head>
@@ -233,7 +384,7 @@
 
     <header id="home">
         <div class="container">
-            <img src="images/ZWY.jpg" alt="Zong-Wei Yeh" class="avatar" style="width: 200px; height: 200px;">
+            <img src="images/ZWY.jpg" alt="Zong-Wei Yeh" class="avatar">
             <h1>Zong-Wei (Eric) Yeh</h1>
             <div class="header-info">
                 <p>Ph.D. Candidate in Money and Banking</p>
@@ -260,44 +411,53 @@
     <section id="about">
         <div class="container">
             <h2>About Me</h2>
-            <p style="margin-bottom: 30px; font-size: 1.1rem;">
-                I am a Ph.D. candidate at National Chengchi University. My research interests include 
-                <strong>Derivatives, Financial Engineering, Sustainable Finance, and AI in Finance</strong>.
+            <p style="margin-bottom: 40px; font-size: 1.15rem; max-width: 800px; color: #475569;">
+                I am a Ph.D. candidate at the Department of Money and Banking, National Chengchi University. 
+                My research interests focus on <strong>Derivatives, Financial Engineering, Sustainable Finance, and AI in Finance</strong>.
             </p>
 
             <div class="tab-buttons">
-                <button class="tab-btn active" onclick="openTab('education')">Education</button>
-                <button class="tab-btn" onclick="openTab('honors')">Honors & Awards</button>
-                <button class="tab-btn" onclick="openTab('teaching')">Teaching</button>
+                <button class="tab-btn active" onclick="openTab(event, 'education')">Education</button>
+                <button class="tab-btn" onclick="openTab(event, 'honors')">Honors & Awards</button>
+                <button class="tab-btn" onclick="openTab(event, 'teaching')">Teaching Experience</button>
             </div>
 
             <div id="education" class="tab-content active">
                 <div class="list-item">
-                    <strong>Ph.D. in Money and Banking</strong> <span class="year-badge">2022 - 2026 (Exp)</span><br>
-                    National Chengchi University
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+                        <strong style="font-size:1.1rem; color:var(--primary-navy);">Ph.D. in Money and Banking</strong>
+                        <span class="year-badge">2022 - 2026 (Exp)</span>
+                    </div>
+                    <div style="color:var(--text-muted);">National Chengchi University</div>
                 </div>
                 <div class="list-item">
-                    <strong>M.S. in Money and Banking</strong> <span class="year-badge">2020 - 2022</span><br>
-                    National Chengchi University
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+                        <strong style="font-size:1.1rem; color:var(--primary-navy);">M.S. in Money and Banking</strong>
+                        <span class="year-badge">2020 - 2022</span>
+                    </div>
+                    <div style="color:var(--text-muted);">National Chengchi University</div>
                 </div>
                 <div class="list-item">
-                    <strong>B.S. in Mathematics</strong> <span class="year-badge">2016 - 2020</span><br>
-                    University of Taipei
+                    <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+                        <strong style="font-size:1.1rem; color:var(--primary-navy);">B.S. in Mathematics</strong>
+                        <span class="year-badge">2016 - 2020</span>
+                    </div>
+                    <div style="color:var(--text-muted);">University of Taipei</div>
                 </div>
             </div>
 
             <div id="honors" class="tab-content">
                 <div class="list-item">
-                    <strong>Outstanding Doctoral Student Fellowship, NSTC</strong> <span class="year-badge">2022-2026</span>
+                    <strong>Outstanding Doctoral Student Fellowship</strong>, NSTC <span class="year-badge">2022 - 2026</span>
                 </div>
                 <div class="list-item">
-                    <strong>Conference Subsidy (ESWC), NSTC</strong> <span class="year-badge">2025</span>
+                    <strong>Conference Subsidy (ESWC)</strong>, NSTC <span class="year-badge">2025</span>
                 </div>
                 <div class="list-item">
-                    <strong>Travel Grant (CICF), NCCU</strong> <span class="year-badge">2025</span>
+                    <strong>Travel Grant (CICF)</strong>, NCCU <span class="year-badge">2025</span>
                 </div>
                 <div class="list-item">
-                    <strong>Gold Award, Bank of Taiwan Prize in Finance</strong> <span class="year-badge">2022</span>
+                    <strong>Gold Award</strong>, Bank of Taiwan Prize in Finance <span class="year-badge">2022</span>
                 </div>
             </div>
 
@@ -323,20 +483,37 @@
             <h2>Publications</h2>
             
             <div class="paper-card">
-                <a href="https://www.sciencedirect.com/science/article/pii/S0927538X24001434" class="paper-title">
+                <a href="https://www.sciencedirect.com/science/article/pii/S0927538X24001434" class="paper-title" target="_blank">
                     What Drives Jumps in the Secured Overnight Financing Rate? Evidence from the Arbitrage-Free Nelson-Siegel Model with Jump Diffusion
                 </a>
                 <p class="paper-authors">with Dong-Jie Fang, Jie-Cao He, and Shih-Kuei Lin</p>
                 <p class="paper-journal">Pacific-Basin Finance Journal, 2024 (NSTC ATier 2)</p>
+                
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        In this paper, the arbitrage-free Nelson–Siegel (NS) model with jump diffusion (AFNSJ) is proposed to describe the Secured Overnight Financing Rate (SOFR). The parameters of this model are estimated through particle filtering conducted with a weighted maximum likelihood estimation approach. The empirical results of this study indicate that the AFNSJ outperforms the arbitrage-free NS model in fitting market data. SOFR jumps are highly related to Federal Open Market Committee meetings. Moreover, even under different interest rate changes, these jumps are mainly driven by a short-term factor. The risk adjustment term can suitably capture changes in the US Federal Reserve rate caused by the jump risk component.
+                    </div>
+                </div>
             </div>
 
             <div class="paper-card">
-                <span class="paper-title">
+                <a href="https://www.management-review.org/zh/all-issues/articles/implied-stochastic-volatility-in-usd-jpy" class="paper-title" target="_blank">
                     Delta Hedging in the USD/JPY Options Market: Insights from Implied Stochastic Volatility
-                </span>
+                </a>
                 <p class="paper-authors">with Shih-Kuei Lin, Kendro Vincent, and Chung-Jen Lin</p>
                 <p class="paper-journal">Management Review, 2024 (TSSCI)</p>
-                <span class="tag">Corresponding Author</span>
+                <div class="tag-container">
+                    <span class="tag highlight">Corresponding Author</span>
+                </div>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        Purpose–The purpose of this paper is to explore the performance of the implied stochastic volatility (ISV) approach in fitting the implied volatility surface (IVS) of USD/JPY and to analyze the hedging performance under standard and minimum variance (MV) delta. Design/methodology/approach–In this study, the ISV approach proposed by Aït-Sahalia et al.(2021) is mainly used to construct the IVS and parameter estimation using the Heston model as the model base. Findings–Firstly, based on the Heston model, the ISV approach has better in-sample and out-of-sample fitting ability compared to the conventional approach. On the other hand, we demonstrate that the ISV approach is effective in improving the accuracy of the hedging, especially in terms of the MV delta, using a delta-neutral hedging strategy.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -346,29 +523,139 @@
             <h2>Working Papers</h2>
 
             <div class="paper-card">
-                <span class="paper-title">Carbon Policy Paradox: The Divergent Impacts of Short-term versus Long-term Policies</span>
+				<a href="https://drive.google.com/file/d/1ajQWkReqhX0urWASBxlRvXwbcEqFf1kd/view?usp=share_link" class="paper-title" target="_blank">
+                    Carbon Policy Paradox: The Divergent Impacts of Short-term versus Long-term Policies
+                </a>
+                <!-- <span class="paper-title">Carbon Policy Paradox: The Divergent Impacts of Short-term versus Long-term Policies</span> -->
                 <p class="paper-authors">with I-Hsuan Ethan Chiang and Shih-Kuei Lin</p>
                 <p class="paper-journal">Submitted to Review of Financial Studies</p>
-                <span class="tag">Job Market Paper</span> <span class="tag">Corresponding Author</span>
-                <p style="font-size: 0.85rem; color: #666; margin-top: 8px;">Presentations: CICF, ESWC, FMA, EFMA, AsianFA, MSFC, EcoSta, FeAT</p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-top: 8px;">
+                    <i class="fas fa-bullhorn" style="margin-right:5px; color:#94a3b8;"></i> 
+                    Presentations: CICF, ESWC, FMA, EFMA, AsianFA, MSFC, EcoSta, FeAT
+                </p>
+                <div class="tag-container">
+                    <span class="tag highlight">Job Market Paper</span>
+                    <span class="tag highlight">Corresponding Author</span>
+                </div>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        We investigate how carbon policies with different time horizons affect fossil-fuel use. Our model shows a simple yet important mechanism: near-term tightening policies raise today’s carbon cost and slow down extraction, while long-term tightening policies push costs further into the future and encourage oil producers to extract more sooner. We use a joint affine term-structure model to uncover level and slope factors from the EUA futures curve, which capture short- and long-horizon policy signals. We find a one-standard-deviation short-horizon tightening reduces European oil supply and demand by 0.3–0.4\% within three months. In contrast, an equally sized long-horizon tightening increases both series by about 0.9\% around the six-month horizon. Furthermore, short-horizon policies shift energy use toward natural gas, while long-horizon policies crowd it out, amplifying the run-up in oil use. 
+                    </div>
+                </div>
             </div>
 
             <div class="paper-card">
-                <span class="paper-title">Empirical Research on the Taiwan Stock Market: Review and Outlook</span>
+				<a href="https://drive.google.com/file/d/16o4rUN0d00G2SPWgzHgOceE43CkpT9Y-/view?usp=share_link" class="paper-title" target="_blank">
+                    Empirical Research on the Taiwan Stock Market: Review and Outlook
+                </a>
+                <!-- <span class="paper-title">Empirical Research on the Taiwan Stock Market: Review and Outlook</span> -->
                 <p class="paper-authors">with Wei-Che Tsai, Hsin Yu Chiu, and Kendro Vincent</p>
                 <p class="paper-journal">Revised & Resubmit to NTU Management Review</p>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        Taiwan’s stock market has gained global prominence, underpinned by its leadership in the semiconductor and AI sectors. Distinguished by a retail-dominated microstructure, the market offers a unique setting for empirical finance research. This paper systematically reviews four major themes: asset pricing, anomalies, mutual funds, and investor heterogeneity. The literature reveals a definitive shift from the CAPM to advanced multi-factor frameworks, with the Fama-French six-factor and q-factor models demonstrating superior explanatory power. While traditional anomalies often appear fragile, robust abnormal returns emerge when conditioned on earnings quality, trading frictions, or machine learning signals. Mutual fund research highlights distinct stock-selection skills but persistent deficits in market timing. Furthermore, investor heterogeneity plays a central role in price formation: foreign institutions lead price discovery, whereas retail investors provide liquidity while driving sentiment-induced mispricing. Future research should leverage Taiwan’s specific institutional environment to explore non-linear factor models, AI applications, and the impact of regulatory shocks.
+                    </div>
+                </div>
             </div>
 
             <div class="paper-card">
-                <span class="paper-title">Altruism in P2P Lending: Evidence from Lending Club</span>
+				<a href="https://drive.google.com/file/d/19qwgbwuWejfhB9p-5JJPCoRH_nwD1b1L/view?usp=share_link" class="paper-title" target="_blank">
+                    Language of Altruism: Funding Success and Default Risk in P2P Lending
+                </a>
+                <!-- <span class="paper-title">Altruism in P2P Lending: Evidence from Lending Club</span> -->
                 <p class="paper-authors">with Dong-Jie Fang, Chien-Hsiu Lin, and Shih-Kuei Lin</p>
                 <p class="paper-journal">Submitted to Review of Quantitative Finance and Accounting</p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-top: 8px;">
+                    <i class="fas fa-bullhorn" style="margin-right:5px; color:#94a3b8;"></i>
+                    Presentations: EFMA, EasternFA, TRIA, TFA
+                </p>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        This study examines whether altruistic language in loan descriptions affects loan funding and default in peer‐to‐peer (P2P) lending. Using 119,379 Lending Club loans, we employ text mining to construct altruistic variables, including prosocial and proenvironmental intents, and linguistic metrics, including readability, tone, and deception cues. We find that loans framed with altruistic appeals are less likely to be fully funded, yet exhibiting lower default risk. In particular, prosocial content drives the bulk of this result, whereas explicitly pro‐environmental language has a muted impact on default but appears to induce greater investor scrutiny at funding. Linguistic factors further moderate these effects: more readable and positive descriptions attract more funding and lower defaults, while more deception cues increase default risk. Overall, our findings suggest a tradeoff between altruistic signaling and credit risk. Lenders discount altruistic appeals even though such borrowers hold a lower default probability.
+                    </div>
+                </div>
             </div>
             
             <div class="paper-card">
-                <span class="paper-title">Volatility Decay and Arbitrage in Leveraged ETFs: Evidence from the US and Japan</span>
+				<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5421274" class="paper-title" target="_blank">
+                    Volatility Decay and Arbitrage in Leveraged ETFs: Evidence from the US and Japan
+                </a>
+                <!-- <span class="paper-title">Volatility Decay and Arbitrage in Leveraged ETFs: Evidence from the US and Japan</span> -->
                 <p class="paper-authors">with Cheng-To Lin, Shih-Kuei Lin, and George Y. Wang</p>
-                <span class="tag">Corresponding Author</span>
+                <p style="font-size: 0.9rem; color: #64748b; margin-top: 8px;">
+                     <i class="fas fa-bullhorn" style="margin-right:5px; color:#94a3b8;"></i>
+                     Presentations: TFA, FeAT, TRIA, STSC, TWSIAM
+                </p>
+				<div class="tag-container">
+                    <span class="tag highlight">Corresponding Author</span>
+                </div>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        While financial theory suggests that shorting bear leveraged ETFs (LETFs) is the optimal way to harvest volatility decay, we find the opposite is true in the US market. A beta-neutral arbitrage strategy shorting US bull LETFs yields a Sharpe ratio as high as 2.12, whereas the theoretically superior bear-side strategy is largely unprofitable. This paper resolves this puzzle by examining volatility decay strategies across US and Japanese markets. We find that the overall pairwise beta-neutral strategy is robustly profitable, generating highly positive skewness and offering strong downside protection. The striking cross-market asymmetry is driven not by volatility decay itself, but by the “non-compounding effect”—a friction tied to the markets’ different replication technologies (swaps in the US vs. futures in Japan). Our results show that the optimal decay, harvesting strategy is necessarily asymmetric: shorting bull LETFs in the US but bear LETFs in Japan. Finally, we develop a jump-diffusion model to provide a theoretical basis for the strategy’s exceptionally large profits during market crises.
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+				<a href="https://drive.google.com/file/d/1pWvF218zAw6NKOwRF0zmnWwwY16lMEJD/view?usp=share_link" class="paper-title" target="_blank">
+                    Risk Converge and Procyclicality in Futures Margin System: Evidence from Taiwan Stock Exchange Index Futures
+                </a>
+                <!-- <span class="paper-title">Risk Converge and Procyclicality in Futures Margin System: Evidence from Taiwan Stock Exchange Index Futures</span> -->
+                <p class="paper-authors">with Ting-Da Yan, Ting-Fu Chen, and Chien-Hsiu Lin</p>
+                <div class="tag-container">
+                    <span class="tag highlight">First Author</span>
+                </div>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        Central counterparty (CCP) margin models face a fundamental trade-off between risk coverage accuracy and procyclicality. This study quantifies this trade-off by evaluating four distinct margin systems applied to Taiwan Stock Exchange Index (TAIEX) futures data. The models are constructed from combinations of Simple Moving Average (SMA) and Heston (1993) volatility estimators, specifications with Value-at-Risk (VaR) and Expected Shortfall (ES) risk measures. Our results show that while the Heston model achieves superior backtesting accuracy, it induces substantial procyclicality, generating more volatile and unstable margins than the SMA model. Across all specifications, ES consistently provides more robust protection against extreme tail losses. These findings highlight a critical dilemma for regulators, as the pursuit of statistical accuracy may introduce systemic instability. The incumbent SMA model, while less precise, possesses valuable stabilizing properties, suggesting that the choice of a margin model is a substantive policy decision involving competing objectives.
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+				<a href="https://drive.google.com/file/d/12VrJGFZIxfvYYKLQdCTgbVDl1-oX3YSC/view?usp=sharing" class="paper-title" target="_blank">
+                    Option-Implied Probability Distortions and Stock Return Predictability
+                </a>
+                <!-- <span class="paper-title">Option-Implied Probability Distortions and Stock Return Predictability</span> -->
+                <p class="paper-authors">with Ting-Xuan Wang, Wei-Yu Kuo, and Shih-Kuei Lin</p>
+                <p style="font-size: 0.9rem; color: #64748b; margin-top: 8px;">
+                     <i class="fas fa-bullhorn" style="margin-right:5px; color:#94a3b8;"></i>
+                     Presentations: TFA, FeAT, PBFEAM
+                </p>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        As retail investors increasingly influence financial markets, understanding how cognitive biases affect asset prices is crucial. This study examines the return predictability and economic value of the curvature parameter of probability weighting function, which captures investors’ risk perception through probability distortions. Using a empirical pricing kernel approach with particle filtering, we construct a Probability Weighting Index (PW I) and analyze its predictive power. Empirical results suggest that PW I exhibits a certain degree of predictive power, provides incremental information beyond traditional predictors, and offers economic value through an investment strategy that outperforms the buy-and-hold approach. Further analysis indicates that PWI primarily predicts returns through the discount rate channel, distinguishing it from sentiment-based predictors. Our findings highlight the role of cognitive biases in asset pricing by introducing PW I as a potential behavioral-based predictor.
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper-card">
+				<a href="https://drive.google.com/file/d/11puxyh1L1xV5EEKIg6hRZP1BNh6L15K0/view?usp=sharing" class="paper-title" target="_blank">
+                    Do Investors Care About Carbon Higher Moment Risks
+                </a>
+                <!-- <span class="paper-title">Do Investors Care About Carbon Higher Moment Risks</span> -->
+                <div class="tag-container">
+                    <span class="tag highlight">Single Author</span>
+                </div>
+                <button class="btn-abstract" onclick="toggleAbstract(this)">Read Abstract <i class="fas fa-chevron-down"></i></button>
+                <div class="abstract-content">
+                    <div class="abstract-text">
+                        <strong>Abstract:</strong><br>
+                        TBA
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -377,64 +664,80 @@
         <div class="container">
             <h2>Get in Touch</h2>
             <div class="contact-grid">
-                <div>
+                <div class="contact-left">
                     <div class="contact-info-item">
                         <i class="fas fa-university"></i>
                         <div>
-                            <strong>Office Address</strong><br>
-                            National Chengchi University<br>
-                            No. 64, Sec. 2, Zhinan Rd., Wenshan Dist., Taipei
+                            <strong style="display:block; margin-bottom:4px; color:var(--primary-navy);">Office Address</strong>
+                            <span style="color:var(--text-muted);">National Chengchi University<br>
+                            No. 64, Sec. 2, Zhinan Rd., Wenshan Dist., Taipei</span>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <strong>Email</strong><br>
+                            <strong style="display:block; margin-bottom:4px; color:var(--primary-navy);">Email</strong>
                             <a href="mailto:111352502@nccu.edu.tw">111352502@nccu.edu.tw</a>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <strong>Phone</strong><br>
-                            (+886) 981-897-609
+                            <strong style="display:block; margin-bottom:4px; color:var(--primary-navy);">Phone</strong>
+                            <span style="color:var(--text-muted);">(+886) 981-897-609</span>
                         </div>
                     </div>
                 </div>
-                <div>
-                   <p>Feel free to reach out for research collaborations or full CV requests.</p>
-                   <br>
-                   <a href="ZWY_resume.pdf" style="display:inline-block; padding: 12px 25px; background: var(--primary-navy); color: white; border-radius: 6px; font-weight: 600;">Download Full Resume</a>
+                
+                <div class="contact-right" style="background: #f1f5f9; padding: 30px; border-radius: 12px; text-align:center;">
+                   <p style="margin-bottom: 20px; font-weight: 500;">Feel free to reach out for research collaborations or to request my full CV.</p>
+                   <a href="ZWY_resume.pdf" class="btn-download">
+                       <i class="fas fa-download" style="margin-right:8px;"></i> Download Full Resume
+                   </a>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2026 Zong-Wei Yeh. All rights reserved.
+        <p>&copy; 2026 Zong-Wei Yeh. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Designed with <i class="fas fa-heart" style="color: #ef4444; font-size:0.7rem;"></i> using HTML/CSS</p>
     </footer>
 
     <script>
-        function openTab(tabName) {
-            // Hide all tab contents
+        function openTab(event, tabName) {
             var contents = document.getElementsByClassName("tab-content");
             for (var i = 0; i < contents.length; i++) {
                 contents[i].style.display = "none";
                 contents[i].classList.remove("active");
             }
-            // Remove active class from buttons
             var buttons = document.getElementsByClassName("tab-btn");
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.remove("active");
             }
-            // Show the specific tab content
             document.getElementById(tabName).style.display = "block";
-            // Add active class to the content and the button that was clicked
-            document.getElementById(tabName).classList.add("active");
-            
-            // Find the button that called this function (tricky without event, so we loop by text or index, but simpler to just use event.currentTarget if passed, or just highlight by index logic. Simpler approach for this snippet:
-            // Let's just update the button visually using the logic below based on `event` which is implicitly available in inline calls or better yet:
+            setTimeout(() => {
+                document.getElementById(tabName).classList.add("active");
+            }, 10);
             event.currentTarget.classList.add("active");
+        }
+
+        function toggleAbstract(btn) {
+            var card = btn.closest('.paper-card');
+            var content = card.querySelector('.abstract-content');
+            var icon = btn.querySelector('i');
+
+            if (content.classList.contains('open')) {
+                content.style.maxHeight = null;
+                content.classList.remove('open');
+                btn.classList.remove('active');
+                btn.innerHTML = 'Read Abstract <i class="fas fa-chevron-down"></i>';
+            } else {
+                content.classList.add('open');
+                content.style.maxHeight = content.scrollHeight + 40 + "px";
+                btn.classList.add('active');
+                btn.innerHTML = 'Hide Abstract <i class="fas fa-chevron-up"></i>';
+            }
         }
     </script>
 </body>
